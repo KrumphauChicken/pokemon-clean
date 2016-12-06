@@ -59,6 +59,9 @@ public:
 	int get_currentHP() {
 		return currentHP;
 	}
+	std::string get_species() {
+		return this->entry->name;
+	}
 
 	int take_damage(int damageAmount, std::list<element> damageTypes);
 
