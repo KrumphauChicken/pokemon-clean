@@ -63,6 +63,10 @@ public:
 		return this->entry->name;
 	}
 
+	void set_name(std::string s) {
+		name = s;
+	}
+
 	int take_damage(int damageAmount, std::list<element> damageTypes);
 
 	friend Pokemon* make_pokemon(element type, std::string name);
@@ -82,6 +86,27 @@ public:
 class Grass: public Pokemon {
 public:
 	Grass(int index);
+};
+
+class Squirtle: public Water {
+public:
+	Squirtle(std::string s = "Squirtle"): Water(7) {
+		set_name(s);
+	}
+};
+
+class Wartortle: public Water {
+public:
+	Wartortle(std::string s = "Wartortle"): Water(8) {
+		set_name(s);
+	}
+};
+
+class Blastoise: public Water {
+public:
+	Blastoise(std::string s = "Blastoise"): Water(9) {
+		set_name(s);
+	}
 };
 
 #endif // POKEMON_H
