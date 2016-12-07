@@ -1,6 +1,7 @@
 #ifndef POKEMON_H
 #define POKEMON_H
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <cmath>
@@ -71,6 +72,9 @@ public:
 
 	friend Pokemon* make_pokemon(element type, std::string name);
 
+	virtual int attack1(Pokemon *) = 0;
+	virtual int attack2(Pokemon *) = 0;
+
 };
 
 class Fire: public Pokemon {
@@ -81,6 +85,11 @@ public:
 class Water: public Pokemon {
 public:
 	Water(int index);
+protected:
+	virtual int attack1(Pokemon*); /* NOTE: Making this protected means that
+	 * I cannot use attack1 from a plain, non-pointerized instance of any
+	 * of the subclasses of Water (even though one can still be defined),
+	 * and must use a Pokemon pointer to a Squirtle or other water species. */
 };
 
 class Grass: public Pokemon {
@@ -90,23 +99,21 @@ public:
 
 class Squirtle: public Water {
 public:
-	Squirtle(std::string s = "Squirtle"): Water(7) {
-		set_name(s);
-	}
+	Squirtle(std::string s = "Squirtle"): Water(7) {set_name(s);}
+	int attack2(Pokemon*);
 };
 
 class Wartortle: public Water {
 public:
-	Wartortle(std::string s = "Wartortle"): Water(8) {
-		set_name(s);
-	}
+	Wartortle(std::string s = "Wartortle"): Water(8) {set_name(s);}
+	int attack2(Pokemon*);
 };
 
 class Blastoise: public Water {
 public:
-	Blastoise(std::string s = "Blastoise"): Water(9) {
-		set_name(s);
-	}
+	Blastoise(std::string s = "Blastoise"): Water(9) {set_name(s);}
+	int attack1(Pokemon*);
+	int attack2(Pokemon*);
 };
 
 #endif // POKEMON_H
