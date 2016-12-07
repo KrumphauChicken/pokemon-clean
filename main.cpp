@@ -8,7 +8,9 @@ int main(int argc, char **argv) {
 
 	bubbles->attack1(enemy);
 
-	Squirtle squirt;
+	Pokemon* factoryTest = make_pokemon(8);
+	std::cout << "\nName of factoryTest: " << factoryTest->get_name() \
+	          << std::endl;
 
 	return 0;
 }

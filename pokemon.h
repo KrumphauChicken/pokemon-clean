@@ -64,13 +64,13 @@ public:
 		return this->entry->name;
 	}
 
-	void set_name(std::string s) {
-		name = s;
+	void set_name(std::string s) {	// Make a set_name as a quick-fix, or
+		name = s;					// move name to protected.
 	}
 
 	int take_damage(int damageAmount, std::list<element> damageTypes);
 
-	friend Pokemon* make_pokemon(element type, std::string name);
+	//friend Pokemon* make_pokemon(int index, std::string);
 
 	virtual int attack1(Pokemon *) = 0;
 	virtual int attack2(Pokemon *) = 0;
@@ -115,5 +115,7 @@ public:
 	int attack1(Pokemon*);
 	int attack2(Pokemon*);
 };
+
+Pokemon* make_pokemon(int index);
 
 #endif // POKEMON_H

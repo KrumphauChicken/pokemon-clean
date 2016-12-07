@@ -88,6 +88,17 @@ int Pokemon::take_damage(int damageAmount, std::list<element> damageTypes) {
 	return damageAmount;
 };
 
+// With the new make_pokemon version, some of the decisions in homework 6
+// are obsolete and need to be fixed, but it gets the lesson across.
+Pokemon *make_pokemon(int index) {
+	switch(index) {
+		case 7: return new Squirtle();
+		case 8: return new Wartortle();
+		case 9: return new Blastoise();
+		default: return nullptr;
+	}
+}
+
 /*Pokemon *make_pokemon(element e, std::string n) {
 
 	Pokemon *newPokemon;
